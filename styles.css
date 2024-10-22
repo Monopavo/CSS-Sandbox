@@ -1,202 +1,112 @@
-                    /* ====== Animation Notes =====
-
-Use "@keyframes" followed by the animation's alias in order to define the animation.
-Encapsulate the frames of the animation within curly braces by using the "transform" property. 
-
-EXAMPLE:
-
-@keyframes myAnimationName {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(100px); } 
-
-0% indicates the beginning of the animation, and 100% the end. Any amount of keyframes can be interpolated between them.
-
-Add the animation to the rule with the "animation" shorthand, which consists of...
-
-    animation-name: (Self-explanatory.)
-    animation-duration: (The amount of time to complete one animation cycle (in s or ms).)
-    animation-timing-function: (Determines the style of easing between keyframes.)
-    animation-iteration-count: (How many times the animation is repeated.)
-
-All values within the animation are relative to the starting position of the element; translating 200 pixels to the right, and then translating 200 pixels to the left, will NOT return the element to "0"; it will simply translate 200 pixels to the left of 0.
-
-====== Transform Values =====
-
-transform: rotate(?deg) // Uses degrees. Rotates the element. Positive is clockwise, negative is anticlockwise.
-
-transform: scale(1) // Uses a point-scale, with 1 being the element's base size. Proportionally increases the height and width of the element. 
-
-transform: translate(x, y) // Uses coordinates. Moves ("translates") the element in the specified axis; X-positive is to move right, Y-positive is to move down.  
-transform: translate3d(x, y, z) // Same, but with added z-axis; Z-positive is pushing the element away from the viewer. Requires its parent element to have the "perspective" property.
-transform: translateX() // Strictly moves the element along the X-axis.
-transform: translateY() // Strictly moves the element along the Y-axis.
-transform: translateZ() // Strictly moves the element along the Z-axis.
-
-transform: skew(xdeg, ydeg) // Uses degrees. Distorts ("skews") the element along the X and Y axes.
-transform: skewX() // Strictly skews the element along the Y-axis.
-transform: skewY() // Strictly skews the element along the Y-axis.
-
-===== Timing Function Values =====
-
-alternate // "Loop". Runs through all 0% => 100% keyframes, then back to 0% in one cycle. 
-alternate-reverse // "Ping-pong". Runs through all 100% => 0%, then alternates between starting at 0% and 100% for each cycle.
-
-ease // The default; animation starts slow, speeds up, then slows down.
-
-linear // A constant, smooth transition through all frames.
-
-steps(x) // x = total number of keyframes - 1 (basically, excluding 0%). Effectively "pauses" the animation at each frame.
-
-===== Iteration Values =====
-
------ Either "infinite" or a set number.
-
-*/
-
-
 *,
 *::before,
 *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2vh;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0.5vh 0.5vh 0.5vh #000000;
+    overflow-x: hidden;
 }
 
+a:not(.link-button a) {
+    color: black;
+    text-shadow: none;
+    text-decoration: none;
+}
 
 body {
-    background: radial-gradient(grey, darkgrey);
+    background: darkgrey;
 }
 
+button {
+    display: block;
+}
+
+div {
+    outline: #000000 solid 0.75vh;
+    margin: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2vh;
+}
+
+h1 {
+    padding: 2vh;
+    display: block;
+    background: repeating-linear-gradient(135deg,black 20%,white 21%);
+    font-size: 6vh;
+}
+
+nav {
+    outline: #000000 double 3vh;
+    margin: 6vh;
+    background: radial-gradient(darkgrey, grey);
+    justify-content: center;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.canvas {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.circle {
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+    outline: none;
+}
+
+.contents {
+    outline: #000000 double 1vh;
+    padding: 5vh;
+}
+
+.film-reel {
+    outline: #000000 double 1vh;
+    border: #000000 dashed 0.5vh;
+    background-color: #EEEEEE;
+}
 
 .flex-container {
     display: flex;
     flex-flow: column wrap;
-    align-items: center;
+    justify-content: space-evenly
 }
 
-
-div {
-    outline: #000000 solid 0.75vw;
-    margin: 6vw;
-    display: flex;
-    align-items: center;
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 2vw;
-    font-weight: bold;
-    justify-content: center;
-    text-align: center;
-    text-shadow: 0.25vw 0vw 0.25vw #000000;
+.grid-container {
+    display: grid;
 }
 
+.link-button {
+    outline: #000000 double 1em;
+    background-color:  black;
+}
+
+.link-button:hover {
+    animation: 
+    rotate-teeter 3s ease-in-out infinite;
+}
+
+.return-button {
+    background-color: black;
+    padding: 1em;
+    border: white solid;
+    position: sticky;
+    width: 100%;
+}
 
 .square {
-    height: 10vw;
-    width: 10vw;
+    height: 10vh;
+    width: 10vh;
 } 
-
-
-
-                    /* Animation Definitions and Classes */
-                    
-                    
-        /* Rotate */
-
-
-/* 360 rotation */
-
-
-.fully-rotating {
-    animation: rotate-full 3s linear infinite;
-}
-
-
-@keyframes rotate-full {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
-}
-
-
-/* 4-step rotation */
-
-
-.four-step-rotating {
-    animation: rotate-four 5s steps(4) infinite;
-}
-
-
-@keyframes rotate-four {
-    0% {transform: rotate(0deg)}
-    25% {transform: rotate(90deg);}
-    50% {transform: rotate(180deg);}
-    75% {transform: rotate(270deg);}
-    100% {transform: rotate(360deg);}
-}
-
-
-
-
-
-        /* Scale */
-
-
-/* Grow and shrink */
-
-
-.growing-and-shrinking {
-    animation: grow-and-shrink 1s alternate infinite;
-}
-
-
-@keyframes grow-and-shrink {
-    0% {transform: scale(1);}
-    100% {transform: scale(2);}
-}
-
-
-
-
-
-
-        /* Translate */
-
-
-/* Left to right */
-
-
-.sliding {
-    animation: back-and-forth 5s ease infinite;
-}
-
-
-@keyframes back-and-forth {
-    0% {transform: translateX(0vw);}
-    25% {transform: translateX(-30vw);}
-    50% {transform: translateX(0vw);}
-    75% {transform: translateX(30vw);}
-    100% {transform: translateX(0vw);}
-}
-
-
-
-
-
-
-        /* Skew */
-
-
-/* Basic Skew */
-
-
-.wonky {
-    animation: skew 2s alternate-reverse infinite;
-}
-
-
-@keyframes skew {
-    0% { transform: skew(0deg, 0deg); }
-    25% { transform: skew(30deg, 20deg); }
-    50% { transform: skew(0deg, 0deg); }
-    75% { transform: skew(-30deg, -20deg); }
-    100% { transform: skew(0deg, 0deg); }
-}
