@@ -1,0 +1,20 @@
+.circle {
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+}
+
+.line {
+    height: 0vh;
+    width: 20vh;
+}
+
+.rectangle {
+    height: 10vh;
+    width: 20vh;
+}
+
+.square {
+    height: 10vh;
+    width: 10vh;
+} 

@@ -1,0 +1,63 @@
+/* Grow and shrink */
+
+.grow-and-shrink {
+    animation: grow-and-shrink 1s alternate infinite;
+}
+
+@keyframes grow-and-shrink {
+    from {transform: scale(1);}
+    to {transform: scale(2);}
+}
+
+/* 360 rotation */
+
+.rotate-full {
+    animation: rotate-full 3s linear infinite;
+}
+
+@keyframes rotate-full {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+/* 4-step rotation */
+
+.rotate-four {
+    animation: rotate-four 5s steps(4) infinite;
+}
+
+@keyframes rotate-four {
+    0% {transform: rotate(0deg)}
+    25% {transform: rotate(90deg);}
+    50% {transform: rotate(180deg);}
+    75% {transform: rotate(270deg);}
+    100% {transform: rotate(360deg);}
+}
+
+/* Left to right */
+
+.slide {
+    animation: slide 5s ease infinite;
+}
+
+@keyframes slide {
+    0% {transform: translateX(0%);}
+    25% {transform: translateX(-230%);}
+    50% {transform: translateX(0%);}
+    75% {transform: translateX(230%);}
+    100% {transform: translateX(0%);}
+}
+
+/* Basic Skew */
+
+.skew {
+    animation: skew 2s alternate-reverse infinite;
+}
+
+@keyframes skew {
+    0% { transform: skew(0deg, 0deg); }
+    25% { transform: skew(30deg, 20deg); }
+    50% { transform: skew(0deg, 0deg); }
+    75% { transform: skew(-30deg, -20deg); }
+    100% { transform: skew(0deg, 0deg); }
+}

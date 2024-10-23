@@ -1,0 +1,203 @@
+## Transforms ##
+
+Use "@keyframes" followed by the animation's alias in order to define the animation.
+Encapsulate the frames of the animation within curly braces by using the "transform" property. 
+
+EXAMPLE:
+
+@keyframes myAnimationName {
+    from { transform: translateX(0); }
+    to { transform:translateX(100px); }
+
+//OR// 
+
+@keyframes myAnimationName {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100px); } 
+
+0% indicates the beginning of the animation, and 100% the end. Any amount of keyframes can be interpolated between them.
+
+Add the animation to the rule with the "animation" shorthand, which consists of...
+
+    animation-name: (Self-explanatory.)
+    animation-duration: (The amount of time to complete one animation cycle (in s or ms).)
+    animation-timing-function: (Determines the style of easing between keyframes.)
+    animation-iteration-count: (How many times the animation is repeated.)
+
+All values within the animation are relative to the starting position of the element; translating 200 pixels to the right, and then translating 200 pixels to the left, will NOT return the element to "0"; it will simply translate 200 pixels to the left of 0.
+
+
+
+
+
+## Transform Values ##
+
+transform: rotate(?deg) // Uses degrees. Rotates the element. Positive is clockwise, negative is anticlockwise.
+
+transform: scale(1) // Uses a point-scale, with 1 being the element's base size. Proportionally increases the height and width of the element. 
+
+transform: translate(x, y) // Uses coordinates. Moves ("translates") the element in the specified axis; X-positive is to move right, Y-positive is to move down.  
+transform: translate3d(x, y, z) // Same, but with added z-axis; Z-positive is pushing the element away from the viewer. Requires its parent element to have the "perspective" property.
+transform: translateX() // Strictly moves the element along the X-axis.
+transform: translateY() // Strictly moves the element along the Y-axis.
+transform: translateZ() // Strictly moves the element along the Z-axis.
+
+transform: skew(x, y) // Uses degrees. Distorts ("skews") the element along the X and Y axes.
+transform: skewX() // Strictly skews the element along the Y-axis.
+transform: skewY() // Strictly skews the element along the Y-axis.
+
+
+
+
+
+## Timing / Easing Function Values ##
+
+alternate // "Loop". Runs through all 0% => 100% keyframes, then back to 0% in one cycle. 
+alternate-reverse // "Ping-pong". Runs through all 100% => 0%, then alternates between starting at 0% and 100% for each cycle.
+
+ease // The default; Starts slow, briefly fast in middle, then slows down.
+ease-in // Starts slow, ends fast.
+ease-out // Starts fast, ends slow.
+ease-in-out // Starts slow, consistently fast in middle, ends slow.
+
+linear // A constant, smooth transition through all frames.
+
+steps(x) // x = total number of keyframes - 1 (basically, excluding 0%). Effectively "pauses" the animation at each frame.
+
+
+
+
+
+## Cubic Bézier ##
+
+cubic-bezier(c1, c2, c3, c4) // Allows for completely custom timings. Each argument represents a "control point" on a Bézier curve (Ref: https://en.wikipedia.org/wiki/B%C3%A9zier_curve)...
+
+c1 = Start of timing function, using X-coordinates.
+c2 = Start of easing function, using Y-coordinates.
+c3 = End of timing function, using X-coordinates.
+c4 = End of easing function, using Y-coordinates.
+
+The Bézier curve is (0,0) to (1,1), with each control point having a value between 0 and 1...
+
+Near-0 X // Slower, more gradual pacing; typically smooth.
+Near-1 X // Quicker changes in pacing; typically jerky.
+Near-0 Y // Stiff, abrupt, jerky easing.
+Near-1 Y // Springy, bouncy, smooth easing.
+
+c1 = 0.1 "Slow start" => 1 "Fast start";
+c2 = 0.1 "Jerky start" => 1 "Smooth start";
+c3 = 0.1 "Slow end" => 1 "fast end";
+c4 - 0.1 "Jerky end" => 1 "Smooth end";
+
+With the exception of "alternate" and "alternate-reverse", predefined easings can be made with a Bézier curve...
+
+"Linear" // cubic-bezier(0, 0, 1, 1) // Consistent, linear motion.
+
+"Ease" // cubic-bezier(0.25, 0.1, 0.25, 1.0) // Standard easing in and out.
+
+"Ease-in" // cubic-bezier(0.42, 0, 1, 1) // Starts slow, then speeds up.
+
+"Ease-out" // cubic-bezier(0, 0, 0.58, 1) // Starts fast, then slows down.
+
+"Ease-in-out" // cubic-bezier(0.42, 0, 0.58, 1) // Starts and ends slow, speeds up in the middle.
+
+Basically, cubic-bezier() is a fine-tuning tool for animations; it is added between the duration and easing / timing functions.
+
+
+
+
+
+## Iteration Values ##
+
+Either "infinite" or a set number. Defaults to 1 cycle.
+
+
+
+
+
+## Combining Animations ##
+
+----- Outside of defining different types of transformations and transitions, within the same animation, animations can be combined through the "animation:" property.
+
+----- The animations need to be separated with commas.
+
+EXAMPLE:
+
+.myClassRule {
+    animation:
+        myAnimation1 5s ease infinite,
+        myAnimation2 4s alternate 5,
+        myAnimation3 1s backwards 10,
+}
+
+----- All animations retain their individual keyframe timings and iteration counts, allowing for complex layering. 
+
+----- Using multiple "animation:" properties does not work; the last property will overwrite all the others.
+
+EXAMPLE:
+
+.myClass {
+    animation: myAnimation1 5s ease infinite,
+    animation: myAnimation2 4s alternate 5,
+    animation: myAnimation3 1s backwards 10,
+}
+
+----- Only the third animation will apply.
+
+----- There can be compatibility issues with the above, so it's best to just define unique animations with all the necessary transforms, transitions, and property changes.
+
+----- For the "transform:" property, this is done by linking all the rotate, translate, scale, and skew values in a single property.
+
+----- Other properties can be chained in the same frame by using a semicolon divisor.
+
+EXAMPLE:
+
+@keyframes myCombinedAnimation {
+    0% { transform: scale(1) rotate(0deg); font-size: 14px; color: black; }
+    100% { transform: scale(2) rotate(180deg); font-size: 28px; color: red; }
+}
+
+
+
+
+
+
+## Transitions ##
+
+----- Transitions are an easy way of defining simple animations. Instead of using @keyframes, you can define the properties to transition in a pseudoclass, and then add the "transition:" property and all its values in the base class...
+
+EXAMPLE:
+
+myText {
+    transition: font-size 5s linear;
+}
+
+myText:hover {
+    font-size: 30px;
+}
+
+----- The values of the "transition" property are almost identical to "animation:", but instead of naming an animation, you specify the property to be changed.
+
+----- To chain multiple property changes together, list them within the same "transition:" property, separated by commas...
+
+EXAMPLE:
+
+myText {
+    transition: font-size 5s linear infinite, 
+    color 2s alternate 5, 
+    text-decoration 10s infinite;
+}
+
+myText:hover {
+    font-size: 30px;
+    color: blue;
+    text-decoration: underline;
+}
+
+----- Pseudoclasses like ":active" and ":hover" behave differently when it comes to the "transition:" property...
+
+":active" // Ignores timings, instantly reverting the transition upon releasing a click or removing a finger. 
+
+":hover" // Attempts to smoothly reverse any transitioned properties upon losing the hover state.
+
+----- Basically, use "transition:" to smoothly change the properties of an element during events such as clicks and hovers. For more complex sequences, "animation:" and keyframes provide much greater control.

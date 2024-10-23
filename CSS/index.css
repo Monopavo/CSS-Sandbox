@@ -1,0 +1,40 @@
+h1 {
+    padding: 2vh;
+    display: block;
+    background: repeating-linear-gradient(135deg,var(--primary-colour) 20%,white 21%);
+    font-size: 6vh;
+}
+
+nav {
+    margin: 6vh;
+    background: linear-gradient(var(--secondary-colour), var(--tertiary-colour));
+    justify-content: center;
+}
+
+.index-contents {
+    outline: var(--primary-colour) double 1vh;
+    padding: 5vh;
+}
+
+.film-reel {
+    outline: var(--primary-colour) double 1vh;
+    border: var(--primary-colour) dashed 0.5vh;
+    background-color: white;
+}
+
+.link-button {
+    background-color: var(--primary-colour);
+}
+
+.link-button:hover {
+    animation: rotate-wiggle 250ms ease-in-out infinite;
+}
+
+/* Wiggle rotation */
+
+@keyframes rotate-wiggle {
+    0% {transform: rotate(0deg);}
+    25% {transform: rotate(5deg);}
+    75% {transform: rotate(-5deg);}
+    100% {transform: rotate(0deg);}
+}

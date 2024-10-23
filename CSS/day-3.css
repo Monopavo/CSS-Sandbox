@@ -1,0 +1,138 @@
+* {
+    --red-band: red;
+    --orange-band: orange;
+    --yellow-band: yellow;
+    --green-band: green;
+    --blue-band: blue;
+    --indigo-band: indigo;
+    --violet-band: violet;
+}
+
+/* Circle #1 */
+/* "Linear" = Consistent, linear motion. */
+
+.red-anim {
+    animation: red-anim 3s cubic-bezier(0, 0, 1, 1) alternate infinite;
+}
+
+@keyframes red-anim {
+    from {transform: translateX(-40vw); background-color: var(--red-band);}
+    to {transform: translateX(40vw); background-color: var(--orange-band)}
+}
+
+/* Circle #2 */
+/* "Ease" = Slow start, sharp pacing spike in middle, slow end. */
+
+.orange-anim {
+    animation: orange-anim 3s cubic-bezier(0.25, 0.1, 0.25, 1) alternate infinite;
+}
+
+@keyframes orange-anim {
+    from {transform: translateX(-40vw); background-color: var(--orange-band)}
+    to {transform: translateX(40vw); background-color: var(--yellow-band)}
+}
+
+/* Circle #3 */
+/* "Ease-in" = Starts slow, then speeds up. */
+
+.yellow-anim {
+    animation: yellow-anim 3s cubic-bezier(0.42, 0, 1, 1) alternate infinite;
+}
+
+@keyframes yellow-anim {
+    from {transform: translateX(-40vw); background-color: var(--yellow-band);}
+    to {transform: translateX(40vw); background-color: var(--green-band);}
+}
+
+/* Circle #4 */
+/* "Ease-out" = Starts fast, then slows down. */
+
+.green-anim {
+    animation: green-anim 3s cubic-bezier(0, 0, 0.58, 1) alternate infinite;
+}
+
+@keyframes green-anim {
+    from {transform: translateX(-40vw); background-color: var(--green-band);}
+    to {transform: translateX(40vw); background-color: var(--blue-band);}
+}
+
+/* Circle #5 */
+/* "Ease-in-out" = Starts and ends slow, speeds up in the middle. */
+
+.blue-anim {
+    animation: blue-anim 3s cubic-bezier(0.42, 0, 0.58, 1) alternate infinite;
+}
+
+@keyframes blue-anim {
+    from {transform: translateX(-40vw); background-color: var(--blue-band);}
+    to {transform: translateX(40vw);background-color: var(--indigo-band);}
+}
+
+/* Circle #6 */
+/* "Airtime" = quick start, suspended middle, quick end. */
+
+.indigo-anim {
+    animation: indigo-anim 3s cubic-bezier(0.1, 1, 0.5, 1) alternate infinite;
+}
+
+@keyframes indigo-anim {
+    from {transform: translateX(-40vw); background-color: var(--indigo-band);}
+    to {transform: translateX(40vw); background-color: var(--violet-band);}
+}
+
+/* Circle #7 */
+/* "Wind-up" = gradual start, quick middle, gradual slow end. */
+
+.violet-anim {
+    animation: violet-anim 3s cubic-bezier(1, 0.25, 1, 0) alternate infinite;
+}
+
+@keyframes violet-anim {
+    from {transform: translateX(-40vw); background-color: var(--violet-band);}
+    to {transform: translateX(40vw); background-color: var(--red-band);}
+}
+
+
+
+
+/* Rectangle Transitions*/
+
+
+
+/* Top Rectangle */
+
+.top-rect {
+    background-color: black;
+    transition: background-color 5s linear,
+    color,
+    border-radius 5s linear,  
+    font-size,
+    text-shadow,
+    text-transform,
+    transform 5s linear;
+}
+
+.top-rect:hover {
+    background-color: white;
+    border-radius: 80%;
+    color: black;
+    font-size: larger;
+    text-shadow: none;
+    text-transform: lowercase;
+    transform: rotate(180deg);
+}
+
+/* Bottom Rectangle */
+
+.bottom-rect {
+    background-color: black;
+    transition: background-color,
+    border-radius,
+    color;
+}
+
+.bottom-rect:active {
+    background: repeating-radial-gradient(black, grey, darkgrey);
+    border-radius: 20%;
+    color: black;
+}
