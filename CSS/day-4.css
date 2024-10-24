@@ -1,0 +1,121 @@
+#clip-grid {
+    height: 95vh;
+    width: 95vh;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+} 
+
+/* First Row */
+
+#rec1-inset {
+    height: 20vh;
+    width: 20vh;   
+}
+
+#rec1-inset:active {
+    clip-path: inset(30% 10% 25% 70%);
+}
+
+#rec2-circle {
+    height: 20vh;
+    width: 20vh;  
+}
+
+#rec2-circle:active {
+    clip-path: circle(50%);
+}
+
+#rec3-ellipse {
+    height: 20vh;
+    width: 20vh;  
+}
+
+#rec3-ellipse:active {
+    clip-path: ellipse(25% 25% at 25% 25%);
+}
+
+#rec4-polygon {
+    height: 20vh;
+    width: 20vh;  
+}
+
+#rec4-polygon:active {
+    clip-path: polygon(44% 26%, 49% 7%, 53% 29%, 90% 40%, 67% 46%, 53% 46%, 65% 67%, 60% 79%, 51% 93%, 32% 89%, 14% 48%, 33% 79%, 30% 63%, 37% 50%, 32% 31%, 32% 6%);
+}
+
+/* Second Row */
+
+#cir1-inset {
+    height: 20vh;
+    width: 20vh;  
+}
+
+#cir1-inset:active {
+    clip-path: inset(10% 5% 15% 50%);
+}
+
+#cir2-circle {
+    height: 20vh;
+    width: 20vh;  
+}
+
+#cir2-circle:active {
+    clip-path: circle(100%);
+}
+
+#cir3-ellipse {
+    height: 20vh;
+    width: 20vh;   
+}
+
+#cir3-ellipse:active {
+    clip-path: ellipse(70% 30% at 50% 70%);
+}
+
+#cir4-polygon {
+    height: 20vh;
+    width: 20vh;  
+}
+
+#cir4-polygon:active {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+
+/* Third Row */
+
+#squ1-inset {
+    height: 20vh;
+    width: 20vh;  
+}
+
+#squ1-inset:active {
+    clip-path: inset(0% 50% 20% 10%);
+}
+
+#squ2-circle {
+    height: 20vh;
+    width: 20vh;  
+}
+
+#squ2-circle:active {
+    clip-path: circle(40%);
+}
+
+#squ3-ellipse {
+    height: 20vh;
+    width: 20vh;  
+}
+
+#squ3-ellipse:active {
+    clip-path: ellipse(70% 30%);
+}
+
+#squ4-polygon {
+    height: 20vh;
+    width: 20vh;  
+}
+
+#squ4-polygon:active {
+    clip-path: polygon(19% 14%, 80% 14%, 100% 100%, 66% 29%, 49% 64%, 31% 30%, 0 100%);
+}

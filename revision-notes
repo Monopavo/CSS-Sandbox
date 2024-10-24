@@ -201,3 +201,28 @@ myText:hover {
 ":hover" // Attempts to smoothly reverse any transitioned properties upon losing the hover state.
 
 ----- Basically, use "transition:" to smoothly change the properties of an element during events such as clicks and hovers. For more complex sequences, "animation:" and keyframes provide much greater control.
+
+
+
+## Clip-Path ##
+
+----- The "border-radius:" property is used to effectively "round" the corners of an element to create circular shapes, and can also be configured for angular shapes such as triangles, however there is another property that allows for advanced shapes to be created more easily: "clip-path".
+
+----- "clip-path:" is essentially like using a shape-cutter; you have the clip-path serving as a "mould", which is then applied to the element. Every part of the element within the borders of the clip-path is kept, with everything outside of it hidden.
+
+----- The arguments of these attributes are best used with percentile units, save for "clip-path: path*()", which uses its own SVG path expression.
+
+clip-path: inset(%, %, %, %); // Clips an element to a rectangular shape. Up to 4 values (top, right, left, bottom); similar to "border-radius:".
+
+clip-path: circle(%); // Clips an element to a circular shape. 1 value. 
+
+clip-path: ellipse(h% v% at px% py%); // Clips an element to an elliptical shape. 1 horizontal and 1 vertical value, with optional "at" to determine origin of the clip with X and Y values. 
+
+clip-path: polygon(vx vy, vx vy,...); // Clips an element to a custom polygon shape, based on vertices coordinates. Can accept any number of paired x-y values. Can be used to create highly complex shapes, although using more than 20-ish vertices can cause rendering performance issues. Best used with a generator tool, such as [Bennett Feely's "Clippy"](https://bennettfeely.com/clippy/).
+
+//// Advanced Values: Need to explore these more ////
+
+path("svg-expression"); // Clips the element based on a SVG path expression.
+url("svg-image-location"); // Clips the element based on the path data stored in an SVG image.
+none; // Removes any clipping; useful for animations and changes in state.
+

@@ -1,19 +1,49 @@
+a {
+    transition: 
+    color 500ms linear,
+    text-shadow 500ms linear; 
+}
+
+a:hover {
+    color: var(--primary-colour);
+    text-shadow: none;
+}
+
+details {
+    width: 100vw;
+}
+
 h1 {
-    padding: 2vh;
+    padding: 1vh;
     display: block;
     background: repeating-linear-gradient(135deg,var(--primary-colour) 20%,white 21%);
     font-size: 6vh;
 }
 
 nav {
-    margin: 6vh;
+    margin: 1vh;
     background: linear-gradient(var(--secondary-colour), var(--tertiary-colour));
-    justify-content: center;
+}
+
+summary {
+    font-size: 2em;
+}
+
+summary:hover {
+    animation: summary-slide 1s ease-in-out infinite;
+}
+
+@keyframes summary-slide {
+    0% {transform: translateX(0);}
+    25% {transform: translateX(20vw);}
+    50% {transform: translateX(0);}
+    75% {transform: translateX(-20vw);}
+    100% {transform: translateX(0);}
 }
 
 .index-contents {
     outline: var(--primary-colour) double 1vh;
-    padding: 5vh;
+    padding: 1vh;
 }
 
 .film-reel {
@@ -24,17 +54,9 @@ nav {
 
 .link-button {
     background-color: var(--primary-colour);
+    transition: background-color 500ms linear;
 }
 
 .link-button:hover {
-    animation: rotate-wiggle 250ms ease-in-out infinite;
-}
-
-/* Wiggle rotation */
-
-@keyframes rotate-wiggle {
-    0% {transform: rotate(0deg);}
-    25% {transform: rotate(5deg);}
-    75% {transform: rotate(-5deg);}
-    100% {transform: rotate(0deg);}
+    background-color: var(--secondary-colour);
 }
