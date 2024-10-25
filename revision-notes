@@ -8,12 +8,14 @@ EXAMPLE:
 @keyframes myAnimationName {
     from { transform: translateX(0); }
     to { transform:translateX(100px); }
+}
 
 //OR// 
 
 @keyframes myAnimationName {
     0% { transform: translateX(0); }
     100% { transform: translateX(100px); } 
+}
 
 0% indicates the beginning of the animation, and 100% the end. Any amount of keyframes can be interpolated between them.
 
@@ -226,3 +228,151 @@ path("svg-expression"); // Clips the element based on a SVG path expression.
 url("svg-image-location"); // Clips the element based on the path data stored in an SVG image.
 none; // Removes any clipping; useful for animations and changes in state.
 
+
+
+## Perspective ##
+
+----- It's possible to grant a 3D perspective to 2D elements through the "perspective:" property, allowing for an imitation of the Z-axis. To establish the false Z-axis within a traditional 2D plane of a webpage, the "perspective:" property must be defined in the parent element relative to the child shapes...
+
+EXAMPLE: 
+
+.shape-container {
+    perspective: 1000px;
+}
+
+<div class="shape-container"></div>
+
+----- The "perspective:" property's value represents the distance of the parent from its children. Even with responsive design, it's best to use length-based units such as "px" or "em", as using relative units can cause irregular behaviour across devices; 500px to 2000px are the typical ranges.
+
+----- To create the 3D effect, the element must be rotated on the Y-axis with "transform: rotateY()"...
+
+EXAMPLE:
+
+.shape-container {
+    perspective: 1000px;
+}
+
+.shape {
+    transform: rotate(45deg);
+}
+
+<div class="shape-container">
+    <div class="shape"></div>
+</div>
+
+----- The "perspective-origin:" property, as it name implies, is also placed within the parent container and can be used to adjust the origin point of the perspective; the position where the viewer is seated. It typically uses two X Y values, with these common values:
+
+perspective-origin: 0% 0%; // View from top-left.
+perspective-origin: 0% 50%; // View from center-left.
+perspective-origin: 0% 100%; // View from bottom-left.
+perspective-origin: 50% 0%; // View from top-center.
+perspective-origin: 50% 50%; // View from center (default).
+perspective-origin: 50% 100%; // View from bottom-center.
+perspective-origin: 100% 0%; // View from top-right.
+perspective-origin: 100% 50%; // View from center-right.
+perspective-origin: 100% 100%; // View from bottom-right.
+
+EXAMPLE:
+
+.shape-container {
+    perspective: 1000px;
+    perspective-origin: 0% 0%;
+}
+
+.shape {
+    transform: rotate(45deg);
+}
+
+<div class="shape-container">
+    <div class="shape"></div>
+</div>
+
+----- As elements are naturally 2D, a 3D animation  consists of a parent container alongside multiple children; for example, a "card" container that has "front" and "back" children, or a "cube" container" that has 6 "face" children, each with their own class or ID for animations. The child elements' transformations can easily break with the default configuration, so "transform-style: preserve-3d;" is also placed in the parent element's rule to preserve them.
+
+----- The "backface-visibility:" property is helpful for retaining a 3D shape during animations, as otherwise it appears as if the element has only been skewed. It's placed within the element's rule, and only takes either "hidden" or "visible" as it's value, with "hidden" being the default. The main issue with backface visibility is that it's strictly binary; it's either "visible" or "hidden", with no gradual changes. For more dynamic and smooth animations, such as flipping a playing card, "opacity:" is favoured over "backface-visibility"...
+
+
+EXAMPLE:
+
+<div class="container-3d">
+    <div id="frame">
+        <div id="front">Front</div>
+        <div id="back">
+            <div id="back-text">Back</div>
+        </div>
+    </div>
+</div>
+
+                                        /* Card */
+
+#frame {
+    width: 20vh;
+    height: 30vh;
+    border-radius: 5%;
+    transform-style: preserve-3d;
+    animation: flip-frame 4s linear infinite;
+}
+  
+@keyframes flip-frame {
+    50% {transform: rotateY(180deg);}
+    100% {transform: rotateY(360deg);}
+}
+  
+
+/* Faces */
+
+#front, #back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: 
+        opacity 2s ease-in-out, 
+        background-color 2s ease-in-out;
+}
+  
+/* Front Face */
+
+#front {
+    background-color: orange;
+    opacity: 1;
+    animation: flip-front 4s linear infinite;
+}
+  
+@keyframes flip-front {
+    0%, 25% {opacity: 1;}
+    26%, 75% {opacity: 0;}
+    76%, 100% {opacity: 1;}
+}
+  
+/* Back Face */
+
+#back {
+    background-color: green;
+    transform: rotateY(180deg);
+    opacity: 0;
+    animation: flip-back 4s linear infinite;
+}
+  
+@keyframes flip-back {
+    0%, 25% {opacity: 0;}
+    26%, 75% {opacity: 1; transform: rotateY(0deg);}
+    76%, 100% {opacity: 0;}
+}
+
+#back-text {
+    transform: rotateY(180deg);
+    outline: none;
+}
+
+
+
+----- Essentially...
+
+transform: rotateX() // Rotates the element around the X-axis (front to back).
+
+transform: rotateY() // Rotates the element around the Y-axis (left to right).
+
+transform: rotateZ() // Rotates the element around the Z-axis (flat rotation on the screen).
+
+----- These perspective properties aren't suitable for advanced 3D shaping or animations due to how complex defining the timings and keyframes can get, however they are very handy for lightweight, flipbook-style animations and transitions without requiring library dependencies.

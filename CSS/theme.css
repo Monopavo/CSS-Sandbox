@@ -30,7 +30,7 @@ div:not(.canvas,
 .line, 
 .rectangle,
 .square) {
-    outline: var(--primary-colour) solid 0.75vh;
+    outline: black solid 0.75vh;
     margin: 1vh;
     display: flex;
     align-items: center;
@@ -50,15 +50,15 @@ div:not(.canvas,
 .flex-container {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .flex-column {
-    flex-flow: column;
+    flex-flow: column wrap;
 }
 
 .flex-row {
-    flex-flow: row;
+    flex-flow: row wrap;
 }
 
 .return-button {

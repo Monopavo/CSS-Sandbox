@@ -1,6 +1,6 @@
 #clip-grid {
-    height: 95vh;
-    width: 95vh;
+    height: 90vh;
+    width: 90vh;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(4, 1fr);
 } 
