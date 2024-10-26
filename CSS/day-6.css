@@ -1,0 +1,75 @@
+h2 {
+    background-color: var(--primary-colour);
+}
+
+p {
+    background-color: var(--tertiary-colour);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5vh;
+    height: 90vh;
+    width: 90vw;
+}
+
+.text-box {
+    display: block;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    max-height: 25vh;
+    max-width: 25vh;
+    outline: black solid 1vh;
+}
+
+.scroll-auto {
+    scroll-behavior: auto;
+}
+
+.scroll-smooth {
+    scroll-behavior: auto;
+}
+
+.scrollbar-auto {
+    scrollbar-width: auto;
+    scrollbar-color: var(--secondary-colour) var(--primary-colour);
+}
+
+.scrollbar-none {
+    scrollbar-width: none;
+}
+
+.scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-colour) var(--primary-colour);
+}
+
+.snap-item-start {
+    scroll-snap-align: start;
+}
+
+.snap-item-center {
+    scroll-snap-align: center;
+}
+
+.snap-item-end {
+    scroll-snap-align: end;
+}
+
+.snap-always {
+    scroll-snap-stop: always;
+}
+
+.snap-normal {
+    scroll-snap-stop: normal;
+}
+
+.y-mandatory {
+    scroll-snap-type: y mandatory;
+} 
+
+.y-proximity {
+    scroll-snap-type: y proximity;
+}

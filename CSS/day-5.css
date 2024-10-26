@@ -1,5 +1,5 @@
  
-div {
+div, body {
     outline: black solid 0.50vh;
 }
 

@@ -376,3 +376,82 @@ transform: rotateY() // Rotates the element around the Y-axis (left to right).
 transform: rotateZ() // Rotates the element around the Z-axis (flat rotation on the screen).
 
 ----- These perspective properties aren't suitable for advanced 3D shaping or animations due to how complex defining the timings and keyframes can get, however they are very handy for lightweight, flipbook-style animations and transitions without requiring library dependencies.
+
+
+
+
+## Scroll ##
+
+----- There are multiple properties that govern scrolling and can enhance the UX of a webpage. First is "scroll-behavior:", which only has two possible values...
+
+scroll-behavior: auto; // Instantly scrolls to the new position. The default value.
+scroll-behavior: smooth; // Animates the scroll effect, creating a smooth transition.
+
+
+
+
+
+----- The most influential properties are "scroll-snap-align", "scroll-snap-type", "scroll-snap-stop", "scroll-padding", and "scroll-margin"...
+
+
+
+
+
+----- "scroll-snap-align:" determines the "snap points" that are used to enforce specific scroll behaviours. They are placed at key positions where you would want a user to pause or slow down, such as a <section> on a webpage, or a header in a lengthy <div>. It takes up to two of four possible values, with the first value being horizontal alignment and the second being vertical alignment. If one value is used, then it applies to both...
+
+scroll-snap-align: start; // Aligns the snap point to the start of the container.
+scroll-snap-align: center; // Aligns the snap point to the center of the container.
+scroll-snap-align: end; // Aligns the snap point to the end of the container.
+scroll-snap-align: none; // No snapping behavior.
+
+
+
+
+
+----- "scroll-snap-type:" determines how the snap points 
+
+scroll-snap-type: AXIS PROXIMITY;
+
+AXIS = x // Snaps horizontally.
+AXIS = y // Snaps vertically.
+AXIS = both // Snaps in both directions.
+
+PROXIMITY = mandatory // Always snaps to the defined points; a "strict" and "abrupt" snap. Useful for galleries, carousels, etc...
+PROXIMITY = proximity // Snaps if scrolling is close to a snap point; a "loose" and "smooth" snap. Useful for subtle, gentle pauses in lengthy content sections.
+
+
+
+
+
+----- "scroll-snap-stop:" is similar to scroll-snap-type's "mandatory" and "proximity" values, however it is more explicit. Its somewhat binary nature makes it suitable for JavaScript manipulation without needing to alter the scroll-snap-type property. It takes two possible values...
+
+scroll-snap-stop: always; // Strictly enforces a stop at each snap point. 
+scroll-snap-stop: normal; // Uses the values within "scroll-snap-type".
+
+
+
+
+----- "scroll-padding:" is applied to the scroll container (a div, section, etc.) that has scroll items. It adds padding within the scroll container, ensuring that its scroll items with snap points don't snap too close to the container's edges. It has the same values as the traditional "padding:" property. Essentially, it's a "buffer zone" that prevents the items from touching the container.
+
+
+
+
+
+----- "scroll-margin:" is applied to scroll items (headers, paragraphs, images, etc.) that have been given a "snap-align" point. It ensures that the user's scrolling snaps a comfortable distance from any trailing or advancing content. It has the same values as the traditional "margin:" property. Essentially, it's like a "buffer zone" that extends the range of the snap.
+
+
+
+
+
+----- There are also a couple of other properties that interact with scrolling and the scrollbar, such as...
+
+overflow: auto; // Adds scrollbars if needed.
+overflow: hidden; // Hides overflow content.
+overflow: scroll; // Always adds scrollbars.
+
+scrollbar-color: color1 color2 // Determines the color of the scrollbar. The first color is the thumb (the "draggable part"), and the second is the track (the "background" part).
+
+scrollbar-width: auto; // Default scrollbar width.
+scrollbar-width: thin; // A thinner scrollbar.
+scrollbar-width: none; // Hides the scrollbar.
+
