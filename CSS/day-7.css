@@ -1,0 +1,116 @@
+.perspective {
+    perspective: 1000px;
+    background-color: black;
+}
+
+.particle {
+    height: 100%;
+    width: 25%;
+    background-color: hsla(120, 40%, 20%, 0.5);
+    clip-path: ellipse(10% 10% at 10% 10%);
+    position: absolute;
+}
+
+#p1 {
+    animation: floating-particle-1 6s ease-in-out alternate-reverse infinite;
+    background-color: hsla(36, 100%, 50%, 0.5);
+}
+
+@keyframes floating-particle-1 {
+    from {transform: rotateY(0deg) rotateZ(0deg); left: 10%; opacity: 1;}
+    to {transform: rotateY(180deg) rotateZ(180deg); left: 10%; opacity: 0;}
+}
+
+#p2 {
+    animation: floating-particle-2 6s ease-in-out alternate infinite;
+    background-color: hsla(72, 100%, 50%, 0.5);
+}
+
+@keyframes floating-particle-2 {
+    from {transform: rotateY(50deg) rotateZ(40deg); left: 20%; opacity: 1;}
+    to {transform: rotateY(120deg) rotateZ(110deg); left: 20%; opacity: 0;}
+}
+
+#p3 {
+    animation: floating-particle-3 6s ease-in-out alternate-reverse infinite;
+    background-color: hsla(108, 100%, 50%, 0.5);
+}
+
+@keyframes floating-particle-3 {
+    from {transform: rotateY(20deg) rotateZ(80deg); left: 30%; opacity: 1;}
+    to {transform: rotateY(200deg) rotateZ(200deg); left: 30%; opacity: 0;}
+}
+
+#p4 {
+    animation: floating-particle-4 8s ease-in-out alternate infinite;
+    background-color: hsla(144, 100%, 50%, 0.5);
+}
+
+@keyframes floating-particle-4 {
+    from {transform: rotateY(25deg) rotateZ(90deg); left: 40%; opacity: 1;}
+    to {transform: rotateY(100deg) rotateZ(270deg); left: 20%; opacity: 0;}
+}
+
+
+#p5 {
+    animation: floating-particle-5 10s ease-in-out alternate-reverse infinite;
+    background-color: hsla(180, 100%, 50%, 0.5);
+}
+
+@keyframes floating-particle-5 {
+    from {transform: rotateY(15deg) rotateZ(270deg); left: 50%; opacity: 1;}
+    to {transform: rotateY(200deg) rotateZ(360deg); left: 50%; opacity: 0;}
+}
+
+#p6 {
+    animation: floating-particle-6 8s ease-in-out alternate infinite;
+    background-color: hsla(216, 100%, 50%, 0.5);
+}
+
+@keyframes floating-particle-6 {
+    from {transform: rotateY(80deg) rotateZ(120deg); left: 60%; opacity: 1;}
+    to {transform: rotateY(290deg) rotateZ(30deg); left: 60%; opacity: 0;}
+}
+
+
+#p7 {
+    animation: floating-particle-7 6s ease-in-out alternate-reverse infinite;
+    background-color: hsla(252, 100%, 50%, 0.5);
+}
+
+@keyframes floating-particle-7 {
+    from {transform: rotateY(150deg) rotateZ(90deg); left: 70%; opacity: 1;}
+    to {transform: rotateY(300deg) rotateZ(180deg); left: 70%; opacity: 0;}
+}
+
+
+#p8 {
+    animation: floating-particle-8 4s ease-in-out alternate infinite;
+    background-color: hsla(288, 100%, 50%, 0.5);
+}
+
+@keyframes floating-particle-8 {
+    from {transform: rotateY(250deg) rotateZ(70deg); left: 80%; opacity: 1;}
+    to {transform: rotateY(360deg) rotateZ(100deg); left: 80%; opacity: 0;}
+}
+
+#p9 {
+    animation: floating-particle-9 4s ease-in-out alternate-reverse infinite;
+    background-color: hsla(324, 100%, 50%, 0.5);
+}
+
+@keyframes floating-particle-9 {
+    from {transform: rotateY(-40deg) rotateZ(-100deg); left: 90%; opacity: 1;}
+    to {transform: rotateY(-180deg) rotateZ(-20deg); left: 90%; opacity: 0;}
+}
+
+
+#p10 {
+    animation: floating-particle-10 10s ease-in-out alternate infinite;
+    background-color: hsla(360, 100%, 50%, 0.5);
+}
+
+@keyframes floating-particle-10 {
+    from {transform: rotateY(-240deg) rotateZ(-90deg); left: 100%; opacity: 1;}
+    to {transform: rotateY(240deg) rotateZ(0deg); left: 100%; opacity: 0;}
+}
