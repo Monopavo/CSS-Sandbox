@@ -5,26 +5,32 @@ Encapsulate the frames of the animation within curly braces by using the "transf
 
 EXAMPLE:
 
+```css
 @keyframes myAnimationName {
     from { transform: translateX(0); }
     to { transform:translateX(100px); }
 }
+```
 
 //OR// 
 
+```css
 @keyframes myAnimationName {
     0% { transform: translateX(0); }
     100% { transform: translateX(100px); } 
 }
+```
 
 0% indicates the beginning of the animation, and 100% the end. Any amount of keyframes can be interpolated between them.
 
 Add the animation to the rule with the "animation" shorthand, which consists of...
 
+```css
     animation-name: (Self-explanatory.)
     animation-duration: (The amount of time to complete one animation cycle (in s or ms).)
     animation-timing-function: (Determines the style of easing between keyframes.)
     animation-iteration-count: (How many times the animation is repeated.)
+```
 
 All values within the animation are relative to the starting position of the element; translating 200 pixels to the right, and then translating 200 pixels to the left, will NOT return the element to "0"; it will simply translate 200 pixels to the left of 0.
 
@@ -125,12 +131,14 @@ Either "infinite" or a set number. Defaults to 1 cycle.
 
 EXAMPLE:
 
+```css
 .myClassRule {
     animation:
         myAnimation1 5s ease infinite,
         myAnimation2 4s alternate 5,
         myAnimation3 1s backwards 10,
 }
+```
 
 ----- All animations retain their individual keyframe timings and iteration counts, allowing for complex layering. 
 
@@ -138,11 +146,13 @@ EXAMPLE:
 
 EXAMPLE:
 
+```css
 .myClass {
     animation: myAnimation1 5s ease infinite,
     animation: myAnimation2 4s alternate 5,
     animation: myAnimation3 1s backwards 10,
 }
+```
 
 ----- Only the third animation will apply.
 
@@ -154,10 +164,12 @@ EXAMPLE:
 
 EXAMPLE:
 
+```css
 @keyframes myCombinedAnimation {
     0% { transform: scale(1) rotate(0deg); font-size: 14px; color: black; }
     100% { transform: scale(2) rotate(180deg); font-size: 28px; color: red; }
 }
+```
 
 
 
@@ -170,6 +182,7 @@ EXAMPLE:
 
 EXAMPLE:
 
+```css
 myText {
     transition: font-size 5s linear;
 }
@@ -177,6 +190,7 @@ myText {
 myText:hover {
     font-size: 30px;
 }
+```
 
 ----- The values of the "transition" property are almost identical to "animation:", but instead of naming an animation, you specify the property to be changed.
 
@@ -184,6 +198,7 @@ myText:hover {
 
 EXAMPLE:
 
+```css
 myText {
     transition: font-size 5s linear infinite, 
     color 2s alternate 5, 
@@ -195,6 +210,7 @@ myText:hover {
     color: blue;
     text-decoration: underline;
 }
+```
 
 ----- Pseudoclasses like ":active" and ":hover" behave differently when it comes to the "transition:" property...
 
@@ -236,11 +252,15 @@ none; // Removes any clipping; useful for animations and changes in state.
 
 EXAMPLE: 
 
+```css
 .shape-container {
     perspective: 1000px;
 }
+```
 
+```html
 <div class="shape-container"></div>
+```
 
 ----- The "perspective:" property's value represents the distance of the parent from its children. Even with responsive design, it's best to use length-based units such as "px" or "em", as using relative units can cause irregular behaviour across devices; 500px to 2000px are the typical ranges.
 
@@ -248,6 +268,7 @@ EXAMPLE:
 
 EXAMPLE:
 
+```css
 .shape-container {
     perspective: 1000px;
 }
@@ -255,10 +276,13 @@ EXAMPLE:
 .shape {
     transform: rotate(45deg);
 }
+```
 
+```html
 <div class="shape-container">
     <div class="shape"></div>
 </div>
+```
 
 ----- The "perspective-origin:" property, as it name implies, is also placed within the parent container and can be used to adjust the origin point of the perspective; the position where the viewer is seated. It typically uses two X Y values, with these common values:
 
@@ -274,6 +298,7 @@ perspective-origin: 100% 100%; // View from bottom-right.
 
 EXAMPLE:
 
+```css
 .shape-container {
     perspective: 1000px;
     perspective-origin: 0% 0%;
@@ -282,10 +307,13 @@ EXAMPLE:
 .shape {
     transform: rotate(45deg);
 }
+```
 
+```html
 <div class="shape-container">
     <div class="shape"></div>
 </div>
+```
 
 ----- As elements are naturally 2D, a 3D animation  consists of a parent container alongside multiple children; for example, a "card" container that has "front" and "back" children, or a "cube" container" that has 6 "face" children, each with their own class or ID for animations. The child elements' transformations can easily break with the default configuration, so "transform-style: preserve-3d;" is also placed in the parent element's rule to preserve them.
 
@@ -294,6 +322,7 @@ EXAMPLE:
 
 EXAMPLE:
 
+```html
 <div class="container-3d">
     <div id="frame">
         <div id="front">Front</div>
@@ -302,9 +331,11 @@ EXAMPLE:
         </div>
     </div>
 </div>
+```
 
                                         /* Card */
 
+```css
 #frame {
     width: 20vh;
     height: 30vh;
@@ -364,7 +395,7 @@ EXAMPLE:
     transform: rotateY(180deg);
     outline: none;
 }
-
+```
 
 
 ----- Essentially...

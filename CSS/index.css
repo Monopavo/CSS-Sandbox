@@ -9,10 +9,6 @@ a:hover {
     text-shadow: none;
 }
 
-details {
-    width: 100vw;
-}
-
 h1 {
     padding: 1vh;
     display: block;
@@ -25,14 +21,6 @@ nav {
     background: linear-gradient(var(--secondary-colour), var(--tertiary-colour));
 }
 
-summary {
-    font-size: 2em;
-}
-
-summary:hover {
-    animation: summary-slide 4s ease-in-out infinite;
-}
-
 @keyframes summary-slide {
     0% {transform: translateX(0);}
     25% {transform: translateX(20vw);}
@@ -43,7 +31,12 @@ summary:hover {
 
 .index-contents {
     outline: var(--primary-colour) double 1vh;
-    padding: 1vh;
+    margin-top: 3em;
+    padding: 1em;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: space-between;
 }
 
 .film-reel {
@@ -55,6 +48,8 @@ summary:hover {
 .link-button {
     background-color: var(--primary-colour);
     transition: background-color 500ms linear;
+    padding: 1em;
+    width: 30vh;
 }
 
 .link-button:hover {
